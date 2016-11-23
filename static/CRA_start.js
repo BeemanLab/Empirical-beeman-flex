@@ -16,6 +16,8 @@ function main() {
     //parse myConfig
     var cfg = null;
     //var cfg_demo = {}; // upload  !!! 0
+    var my_url = window.location.href;
+    console.log('url is', my_url);
 
     params = ServerHelper.empirical_start(url);
     ServerHelper.start_request();
@@ -23,10 +25,19 @@ function main() {
     //cfg = ServerHelper.start_request(params.group);
     window.requestAnimationFrame(cfgIsReady);
 
+
+
+    if (params.hasOwnProperty('assignmentId') && params["assignmentId"].match("ASSIGNMENT_ID_NOT_AVAILABLE") && !my_url.includes("demo")) {
+        window.location = 'http://127.0.0.1:8000/static/CRA_demo.html?group=e3cc102355550f93&assignmentId=ASSIGNMENT_ID_NOT_AVAILABLE';
+        console.log("demo mode?", ServerHelper.demo_mode);
+    }
+
     function cfgIsReady() {
-        if(ServerHelper.demo_mode) {
-            window.location = 'http://www.google.com'
-        }
+        //if(ServerHelper.demo_mode) {
+        //    window.location = 'http://127.0.0.1:8000/static/CRA_demo.html?group=e3cc102355550f93&assignmentId=ASSIGNMENT_ID_NOT_AVAILABLE'
+        //}
+        //
+        //ServerHelper.demo_mode = false;
 
 
         //console.log('getting cfg');

@@ -2,6 +2,8 @@ function start_CRA_experiment(cfg) {
 	console.log('imagesOfImages exp', imagesOfImages);
 	console.log('cfg', cfg);
 
+
+
 	var canvas = document.getElementById("canvas");
 	console.log(canvas);
 	var ctx = canvas.getContext("2d");
